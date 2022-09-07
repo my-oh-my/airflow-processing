@@ -12,11 +12,7 @@ dag = DAG('consolidation-W20-5',
           max_active_runs=1,
           catchup=False)
 
-user_id = os.getenv('XTB_API_USER')
-password = os.getenv('XTB_API_PASSWORD')
-args = f'--user_id={user_id} ' \
-       f'--password={password} ' \
-       f'{os.getenv("AIRFLOW_VAR_W20_5_ARGS")}'
+args = f'{os.getenv("AIRFLOW_VAR_W20_5_ARGS")}'
 command = f'cd /srv/git/expert-advisor/ea && python main.py ' + args
 task = BashOperator(
     task_id='ea',
