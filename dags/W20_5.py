@@ -12,7 +12,7 @@ dag = DAG('consolidation-W20-5',
           max_active_runs=1,
           catchup=False)
 
-args = f'{os.getenv("AIRFLOW_VAR_W20_5_ARGS")}'
+args = f'{os.getenv("W20_5_ARGS")}'
 command = f'cd /srv/git/expert-advisor/ea && python main.py ' + args
 task = BashOperator(
     task_id='ea',

@@ -24,9 +24,9 @@ x-airflow-common:
     XTB_API_PASSWORD: ${XTB_API_PASSWORD}
     SLACK_URL: ${SLACK_URL}
     # Scenario settings
-    AIRFLOW_VAR_W20_5_ARGS: ${AIRFLOW_VAR_W20_5_ARGS}
-    AIRFLOW_VAR_W20_30_ARGS: ${AIRFLOW_VAR_W20_30_ARGS}
-    AIRFLOW_VAR_W20_60_ARGS: ${AIRFLOW_VAR_W20_60_ARGS}
+    W20_5_ARGS: ${W20_5_ARGS}
+    W20_30_ARGS: ${W20_30_ARGS}
+    W20_60_ARGS: ${W20_60_ARGS}
   volumes:
     - ./dags:/opt/airflow/dags
     - ./logs:/opt/airflow/logs
