@@ -5,14 +5,14 @@ from airflow.operators.bash import BashOperator
 
 from processing import get_default_args
 
-dag = DAG('consolidation-W20-30',
+dag = DAG('consolidation-ETHEREUM_30',
           default_args=get_default_args(),
-          schedule_interval='*/30 8-17 * * 1-5',
+          schedule_interval='*/30 * * * *',
           concurrency=1,
           max_active_runs=1,
           catchup=False)
 
-args = f'{os.getenv("W20_30_ARGS")}'
+args = f'{os.getenv("ETHEREUM_30_ARGS")}'
 command = f'cd /srv/git/expert-advisor/ea && python main.py ' + args
 task = BashOperator(
     task_id='ea',
