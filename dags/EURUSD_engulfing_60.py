@@ -10,7 +10,7 @@ with DAG('engulfing-EURUSD_60',
           concurrency=1,
           max_active_runs=1,
           catchup=False) as dag:
-    args = f'{Variable.get("ETHEREUM_EURUSD_60_ARGS")}'
+    args = f'{Variable.get("EURUSD_ENGULFING_60_ARGS")}'
     command = f'cd /srv/git/expert-advisor/ea && python engulfing_runner.py ' + args
     BashOperator(
         task_id='ea',
