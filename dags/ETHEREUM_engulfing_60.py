@@ -6,7 +6,7 @@ from processing import get_default_args
 
 with DAG('engulfing-ETHEREUM_60',
           default_args=get_default_args(),
-          schedule_interval='0 * * * *',
+          schedule_interval='0 * * * 1-5',
           concurrency=1,
           max_active_runs=1,
           catchup=False) as dag:

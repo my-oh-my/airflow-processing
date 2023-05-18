@@ -6,7 +6,7 @@ from processing import get_default_args
 
 with DAG('consolidation-ETHEREUM_30',
           default_args=get_default_args(),
-          schedule_interval='*/30 * * * *',
+          schedule_interval='*/30 * * * 1-5',
           concurrency=1,
           max_active_runs=1,
           catchup=False) as dag:
