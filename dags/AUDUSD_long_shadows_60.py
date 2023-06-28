@@ -4,13 +4,13 @@ from airflow.operators.bash import BashOperator
 
 from processing import get_default_args
 
-with DAG('long-shadows-USDJPY_30',
+with DAG('long-shadows-AUDUSD_60',
           default_args=get_default_args(),
-          schedule_interval='*/30 * * * 1-5',
+          schedule_interval='0 * * * 1-5',
           concurrency=1,
           max_active_runs=1,
           catchup=False) as dag:
-    args = f'{Variable.get("USDJPY_LONG_SHADOWS_30_ARGS")}'
+    args = f'{Variable.get("AUDUSD_LONG_SHADOWS_60_ARGS")}'
     command = f'cd /srv/git/expert-advisor/ea && python candles_long_shadows_runner.py ' + args
     BashOperator(
         task_id='ea',
