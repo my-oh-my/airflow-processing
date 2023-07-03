@@ -1,8 +1,10 @@
 apache-airflow
+argparse
 pandas
 numpy
 pendulum
 plotly
 tabulate
 schedule
+scikit-learn
 setuptools
