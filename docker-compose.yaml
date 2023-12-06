@@ -27,6 +27,8 @@ x-airflow-common:
     - ./dags:/opt/airflow/dags
     - ./logs:/opt/airflow/logs
     - ./plugins:/opt/airflow/plugins
+    #  ea_configs stores list of ea configurations for dynamic DAG creation
+    - ./ea_config:/opt/airflow/ea_configs
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on:
     &airflow-common-depends-on
