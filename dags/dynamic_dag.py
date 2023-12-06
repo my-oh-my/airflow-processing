@@ -6,8 +6,8 @@ from airflow.operators.bash import BashOperator
 
 from processing import get_default_args
 
-MAIN_PATH = f'/srv/git/expert-advisor/ea'
-JSON_CONFIG_PATH = f'{MAIN_PATH}/configs/strategies_configs.json'
+EA_PATH = f'/srv/git/expert-advisor/ea'
+CONFIG_PATH = f'/opt/airflow/ea_configs/configs.json'
 
 
 def create_dag(config: dict):
@@ -19,7 +19,7 @@ def create_dag(config: dict):
              catchup=False) as dag:
         script_name = config['script_name']
         args = f'{Variable.get(config["admin_variable_name"])}'
-        command = f'cd {MAIN_PATH} && python {script_name} ' + args
+        command = f'cd {EA_PATH} && python {script_name} ' + args
         BashOperator(
             task_id='ea',
             bash_command=command,
@@ -29,7 +29,7 @@ def create_dag(config: dict):
     return dag
 
 
-with open(JSON_CONFIG_PATH, 'r') as reader:
+with open(CONFIG_PATH, 'r') as reader:
     json_config = reader.read()
 
 ea_configs = json.loads(json_config)
