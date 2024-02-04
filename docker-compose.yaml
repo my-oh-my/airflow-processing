@@ -27,8 +27,6 @@ x-airflow-common:
     - ./dags:/opt/airflow/dags
     - ./logs:/opt/airflow/logs
     - ./plugins:/opt/airflow/plugins
-    #  ea_configs stores list of ea configurations for dynamic DAG creation
-    - ./ea_configs:/opt/airflow/ea_configs
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on:
     &airflow-common-depends-on
@@ -146,8 +144,8 @@ services:
           echo "   https://airflow.apache.org/docs/apache-airflow/stable/start/docker.html#before-you-begin"
           echo
         fi
-        mkdir -p /sources/logs /sources/dags /sources/plugins /sources/ea_configs
-        chown -R "${AIRFLOW_UID}:0" /sources/{logs,dags,plugins,ea_configs}
+        mkdir -p /sources/logs /sources/dags /sources/plugins
+        chown -R "${AIRFLOW_UID}:0" /sources/{logs,dags,plugins}
         exec /entrypoint airflow version
     # yamllint enable rule:line-length
     environment:
