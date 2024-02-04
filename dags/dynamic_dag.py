@@ -7,7 +7,6 @@ from airflow.operators.bash import BashOperator
 from processing import get_default_args
 
 EA_PATH = f'/srv/git/expert-advisor/ea'
-CONFIG_PATH = f'/opt/airflow/ea_configs/configs.json'
 
 
 def create_dag(config: dict):
@@ -29,9 +28,7 @@ def create_dag(config: dict):
     return dag
 
 
-with open(CONFIG_PATH, 'r') as reader:
-    json_config = reader.read()
-
+json_config = Variable.get('DAG_DEFINITIONS')
 ea_configs = json.loads(json_config)
 
 for ea_config in ea_configs:
